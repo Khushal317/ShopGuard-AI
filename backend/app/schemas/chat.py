@@ -2,6 +2,7 @@ from enum import Enum
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from app.schemas.evaluation import GroundednessResult
 from app.schemas.knowledge import SourceType
 from app.schemas.order import ToolCallRequest, ToolCallResult
 
@@ -50,3 +51,4 @@ class ChatResponse(BaseModel):
     retrieved_context: list[RetrievedContext] = []
     tool_call: ToolCallRequest | None = None
     tool_result: ToolCallResult | None = None
+    evaluation: GroundednessResult | None = None

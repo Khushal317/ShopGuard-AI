@@ -13,6 +13,7 @@ from app.schemas.knowledge import KnowledgeSearchResult, SourceType
 from app.services.interaction_logging import create_interaction_start, finish_interaction, log_completed_interaction
 from app.services.knowledge_ingestion import search_knowledge_base
 from app.services.order_tool_router import detect_order_tool, execute_tool_call
+from app.services.evaluation import score_groundedness
 
 KNOWLEDGE_PATTERN = re.compile(
     r"\b(product|price|stock|variant|size|color|jacket|sneaker|tote|bag|shipping|return policy|refund policy|policy|delivery)\b",
@@ -78,6 +79,10 @@ def _answer_chat_with_session(message: str, top_k: int, session: Session, starte
         answer=_generate_grounded_answer(message=message, results=results),
         citations=_dedupe_citations(citations),
         retrieved_context=contexts,
+    )
+    response.evaluation = score_groundedness(
+        answer=response.answer,
+        contexts=[context.content for context in contexts],
     )
     log_completed_interaction(session=session, user_query=message, response=response, started_at=started_at)
     return response

@@ -30,7 +30,7 @@ def finish_interaction(
         for context in response.retrieved_context:
             session.add(_build_context_log(interaction.id, context))
 
-        groundedness = score_groundedness(
+        groundedness = response.evaluation or score_groundedness(
             answer=response.answer,
             contexts=[context.content for context in response.retrieved_context],
         )
@@ -108,4 +108,3 @@ def _build_context_log(interaction_log_id: int, context: RetrievedContext) -> Re
             "distance": context.distance,
         },
     )
-

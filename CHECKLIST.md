@@ -88,17 +88,17 @@ Each phase must be completed and verified before moving to the next phase.
 
 ## Phase 7: Streamlit Frontend
 
-- [ ] Add Streamlit app shell.
-- [ ] Add chat panel.
-- [ ] Add developer console panel.
-- [ ] Display selected route.
-- [ ] Display retrieved context.
-- [ ] Display citations.
-- [ ] Display tool JSON payload.
-- [ ] Display deterministic tool result.
-- [ ] Display evaluation score when available.
-- [ ] Verify product and policy questions from UI.
-- [ ] Verify order actions from UI.
+- [x] Add Streamlit app shell.
+- [x] Add chat panel.
+- [x] Add developer console panel.
+- [x] Display selected route.
+- [x] Display retrieved context.
+- [x] Display citations.
+- [x] Display tool JSON payload.
+- [x] Display deterministic tool result.
+- [x] Display evaluation score when available.
+- [x] Verify product and policy questions from UI.
+- [x] Verify order actions from UI.
 
 ## Phase 8: Quality Hardening
 

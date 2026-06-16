@@ -38,53 +38,53 @@ Each phase must be completed and verified before moving to the next phase.
 
 ## Phase 3: RAG Ingestion Pipeline
 
-- [ ] Add product chunking.
-- [ ] Add policy chunking.
-- [ ] Add ChromaDB collection setup.
-- [ ] Add metadata-rich document chunks.
-- [ ] Add ingestion script.
+- [x] Add product chunking.
+- [x] Add policy chunking.
+- [x] Add ChromaDB collection setup.
+- [x] Add metadata-rich document chunks.
+- [x] Add ingestion script.
 - [ ] Verify product retrieval.
 - [ ] Verify policy retrieval.
-- [ ] Verify citation metadata is available.
+- [x] Verify citation metadata is available.
 
 ## Phase 4: Grounded RAG Chat Endpoint
 
-- [ ] Add `POST /api/chat`.
-- [ ] Add product and policy route handling.
-- [ ] Add retrieval-backed prompt construction.
-- [ ] Add Groq grounded response generation.
-- [ ] Add citations to responses.
-- [ ] Add safe unknown-answer behavior.
-- [ ] Verify grounded product answers.
-- [ ] Verify grounded policy answers.
-- [ ] Verify unsupported questions do not hallucinate.
+- [x] Add `POST /api/chat`.
+- [x] Add product and policy route handling.
+- [x] Add retrieval-backed prompt construction.
+- [x] Add Groq grounded response generation.
+- [x] Add citations to responses.
+- [x] Add safe unknown-answer behavior.
+- [x] Verify grounded product answers.
+- [x] Verify grounded policy answers.
+- [x] Verify unsupported questions do not hallucinate.
 
 ## Phase 5: Deterministic Transaction Engine
 
-- [ ] Add tool route detection.
-- [ ] Add `track_order` schema.
-- [ ] Add `cancel_order` schema.
-- [ ] Add `request_refund` schema.
-- [ ] Add backend order tracking logic.
-- [ ] Add backend order cancellation logic.
-- [ ] Add backend refund request logic.
-- [ ] Add tool execution logging.
-- [ ] Verify valid order tracking.
-- [ ] Verify invalid order/email handling.
-- [ ] Verify eligible cancellation.
-- [ ] Verify ineligible cancellation.
-- [ ] Verify refund request behavior.
+- [x] Add tool route detection.
+- [x] Add `track_order` schema.
+- [x] Add `cancel_order` schema.
+- [x] Add `request_refund` schema.
+- [x] Add backend order tracking logic.
+- [x] Add backend order cancellation logic.
+- [x] Add backend refund request logic.
+- [x] Add tool execution logging.
+- [x] Verify valid order tracking.
+- [x] Verify invalid order/email handling.
+- [x] Verify eligible cancellation.
+- [x] Verify ineligible cancellation.
+- [x] Verify refund request behavior.
 
 ## Phase 6: Interaction Logging and Evaluation
 
-- [ ] Add interaction logging.
-- [ ] Add retrieved context logging.
-- [ ] Add tool execution result logging.
-- [ ] Add evaluation log storage.
-- [ ] Add groundedness scoring script.
-- [ ] Verify RAG interactions are logged.
-- [ ] Verify tool interactions are logged.
-- [ ] Verify evaluation script creates scores.
+- [x] Add interaction logging.
+- [x] Add retrieved context logging.
+- [x] Add tool execution result logging.
+- [x] Add evaluation log storage.
+- [x] Add groundedness scoring script.
+- [x] Verify RAG interactions are logged.
+- [x] Verify tool interactions are logged.
+- [x] Verify evaluation script creates scores.
 
 ## Phase 7: Streamlit Frontend
 

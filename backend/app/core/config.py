@@ -15,6 +15,10 @@ class Settings(BaseSettings):
     groq_api_key: str | None = Field(default=None, validation_alias="GROQ_API_KEY")
     groq_model: str = Field(default="llama-3.3-70b-versatile", validation_alias="GROQ_MODEL")
     chroma_persist_dir: str = Field(default="./chroma_store", validation_alias="CHROMA_PERSIST_DIR")
+    chroma_collection_name: str = Field(
+        default="shopguard_knowledge",
+        validation_alias="CHROMA_COLLECTION_NAME",
+    )
 
     model_config = SettingsConfigDict(
         env_file=".env",
@@ -26,4 +30,3 @@ class Settings(BaseSettings):
 @lru_cache
 def get_settings() -> Settings:
     return Settings()
-

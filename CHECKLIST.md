@@ -16,24 +16,24 @@ Each phase must be completed and verified before moving to the next phase.
 
 ## Phase 1: Backend Skeleton and Configuration
 
-- [ ] Add FastAPI app entrypoint.
-- [ ] Add Pydantic settings.
-- [ ] Add PostgreSQL database configuration.
-- [ ] Add SQLModel session dependency.
-- [ ] Add health check endpoint.
-- [ ] Add `.env.example`.
-- [ ] Verify backend starts.
-- [ ] Verify `/health` returns success.
+- [x] Add FastAPI app entrypoint.
+- [x] Add Pydantic settings.
+- [x] Add PostgreSQL database configuration.
+- [x] Add SQLModel session dependency.
+- [x] Add health check endpoint.
+- [x] Add `.env.example`.
+- [x] Verify backend starts.
+- [x] Verify `/health` returns success.
 
 ## Phase 2: Mock Shopify Dataset and Database Models
 
-- [ ] Add mock product data.
-- [ ] Add mock policy data.
-- [ ] Add mock order seed data.
-- [ ] Add product and variant models.
-- [ ] Add order and order item models.
-- [ ] Add log models.
-- [ ] Add repeatable seed script.
+- [x] Add mock product data.
+- [x] Add mock policy data.
+- [x] Add mock order seed data.
+- [x] Add product and variant models.
+- [x] Add order and order item models.
+- [x] Add log models.
+- [x] Add repeatable seed script.
 - [ ] Verify database records are created correctly.
 
 ## Phase 3: RAG Ingestion Pipeline
@@ -111,4 +111,3 @@ Each phase must be completed and verified before moving to the next phase.
 - [ ] Verify full test suite passes.
 - [ ] Verify fresh setup flow.
 - [ ] Verify final demo behavior.
-

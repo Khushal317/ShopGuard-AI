@@ -1,0 +1,59 @@
+[
+  {
+    "order_id": "9982",
+    "customer_email": "maya@example.com",
+    "customer_name": "Maya Chen",
+    "status": "processing",
+    "refund_status": "not_requested",
+    "total_amount": "189.00",
+    "currency": "USD",
+    "tracking_number": null,
+    "items": [
+      {
+        "product_sku": "SG-JACKET-LEATHER",
+        "variant_sku": "SG-JACKET-LEATHER-BRN-M",
+        "title": "Aster Leather Jacket - Brown / M",
+        "quantity": 1,
+        "unit_price": "189.00"
+      }
+    ]
+  },
+  {
+    "order_id": "10031",
+    "customer_email": "liam@example.com",
+    "customer_name": "Liam Patel",
+    "status": "shipped",
+    "refund_status": "not_requested",
+    "total_amount": "84.00",
+    "currency": "USD",
+    "tracking_number": "SGTRACK10031",
+    "items": [
+      {
+        "product_sku": "SG-SNEAKER-CLOUD",
+        "variant_sku": "SG-SNEAKER-CLOUD-NVY-10",
+        "title": "Cloudstep Everyday Sneaker - Navy / 10",
+        "quantity": 1,
+        "unit_price": "84.00"
+      }
+    ]
+  },
+  {
+    "order_id": "10044",
+    "customer_email": "sofia@example.com",
+    "customer_name": "Sofia Rivera",
+    "status": "delivered",
+    "refund_status": "not_requested",
+    "total_amount": "48.00",
+    "currency": "USD",
+    "tracking_number": "SGTRACK10044",
+    "items": [
+      {
+        "product_sku": "SG-BAG-CANVAS",
+        "variant_sku": "SG-BAG-CANVAS-OLV-OS",
+        "title": "Harbor Canvas Tote - Olive / One Size",
+        "quantity": 1,
+        "unit_price": "48.00"
+      }
+    ]
+  }
+]

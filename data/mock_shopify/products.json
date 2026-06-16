@@ -1,0 +1,74 @@
+[
+  {
+    "sku": "SG-JACKET-LEATHER",
+    "title": "Aster Leather Jacket",
+    "category": "Outerwear",
+    "description": "A regular-fit leather jacket with a soft lining, zip front, and two side pockets.",
+    "price": "189.00",
+    "currency": "USD",
+    "variants": [
+      {
+        "variant_sku": "SG-JACKET-LEATHER-BRN-M",
+        "color": "Brown",
+        "size": "M",
+        "stock": 8,
+        "price": "189.00"
+      },
+      {
+        "variant_sku": "SG-JACKET-LEATHER-BLK-L",
+        "color": "Black",
+        "size": "L",
+        "stock": 4,
+        "price": "189.00"
+      }
+    ]
+  },
+  {
+    "sku": "SG-SNEAKER-CLOUD",
+    "title": "Cloudstep Everyday Sneaker",
+    "category": "Footwear",
+    "description": "A lightweight everyday sneaker with a breathable knit upper and cushioned sole.",
+    "price": "84.00",
+    "currency": "USD",
+    "variants": [
+      {
+        "variant_sku": "SG-SNEAKER-CLOUD-WHT-9",
+        "color": "White",
+        "size": "9",
+        "stock": 12,
+        "price": "84.00"
+      },
+      {
+        "variant_sku": "SG-SNEAKER-CLOUD-NVY-10",
+        "color": "Navy",
+        "size": "10",
+        "stock": 6,
+        "price": "84.00"
+      }
+    ]
+  },
+  {
+    "sku": "SG-BAG-CANVAS",
+    "title": "Harbor Canvas Tote",
+    "category": "Bags",
+    "description": "A durable canvas tote with reinforced handles, inner zip pocket, and water-resistant base.",
+    "price": "48.00",
+    "currency": "USD",
+    "variants": [
+      {
+        "variant_sku": "SG-BAG-CANVAS-OLV-OS",
+        "color": "Olive",
+        "size": "One Size",
+        "stock": 15,
+        "price": "48.00"
+      },
+      {
+        "variant_sku": "SG-BAG-CANVAS-NAT-OS",
+        "color": "Natural",
+        "size": "One Size",
+        "stock": 10,
+        "price": "48.00"
+      }
+    ]
+  }
+]

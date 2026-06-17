@@ -55,5 +55,363 @@
         "unit_price": "48.00"
       }
     ]
+  },
+  {
+    "order_id": "10057",
+    "customer_email": "noah@example.com",
+    "customer_name": "Noah Brooks",
+    "status": "processing",
+    "refund_status": "not_requested",
+    "total_amount": "72.00",
+    "currency": "USD",
+    "tracking_number": null,
+    "items": [
+      {
+        "product_sku": "SG-HOODIE-FLEECE",
+        "variant_sku": "SG-HOODIE-FLEECE-GRN-M",
+        "title": "Northline Fleece Hoodie - Forest Green / M",
+        "quantity": 1,
+        "unit_price": "72.00"
+      }
+    ]
+  },
+  {
+    "order_id": "10068",
+    "customer_email": "ava@example.com",
+    "customer_name": "Ava Morgan",
+    "status": "delivered",
+    "refund_status": "requested",
+    "total_amount": "118.00",
+    "currency": "USD",
+    "tracking_number": "SGTRACK10068",
+    "items": [
+      {
+        "product_sku": "SG-DRESS-LINEN",
+        "variant_sku": "SG-DRESS-LINEN-BLU-S",
+        "title": "Maris Linen Wrap Dress - Blue / S",
+        "quantity": 1,
+        "unit_price": "118.00"
+      }
+    ]
+  },
+  {
+    "order_id": "10072",
+    "customer_email": "ethan@example.com",
+    "customer_name": "Ethan Walker",
+    "status": "cancelled",
+    "refund_status": "not_requested",
+    "total_amount": "136.00",
+    "currency": "USD",
+    "tracking_number": null,
+    "items": [
+      {
+        "product_sku": "SG-WATCH-MINIMAL",
+        "variant_sku": "SG-WATCH-MINIMAL-BLK-OS",
+        "title": "Civic Minimal Watch - Black / One Size",
+        "quantity": 1,
+        "unit_price": "136.00"
+      }
+    ]
+  },
+  {
+    "order_id": "10089",
+    "customer_email": "isabella@example.com",
+    "customer_name": "Isabella Reed",
+    "status": "shipped",
+    "refund_status": "not_requested",
+    "total_amount": "160.00",
+    "currency": "USD",
+    "tracking_number": "SGTRACK10089",
+    "items": [
+      {
+        "product_sku": "SG-BACKPACK-TECH",
+        "variant_sku": "SG-BACKPACK-TECH-BLK-OS",
+        "title": "Axis Tech Backpack - Black / One Size",
+        "quantity": 1,
+        "unit_price": "96.00"
+      },
+      {
+        "product_sku": "SG-SHIRT-OXFORD",
+        "variant_sku": "SG-SHIRT-OXFORD-WHT-M",
+        "title": "Everpress Oxford Shirt - White / M",
+        "quantity": 1,
+        "unit_price": "64.00"
+      }
+    ]
+  },
+  {
+    "order_id": "10102",
+    "customer_email": "oliver@example.com",
+    "customer_name": "Oliver Stone",
+    "status": "processing",
+    "refund_status": "not_requested",
+    "total_amount": "156.00",
+    "currency": "USD",
+    "tracking_number": null,
+    "items": [
+      {
+        "product_sku": "SG-JEANS-STRAIGHT",
+        "variant_sku": "SG-JEANS-STRAIGHT-IND-32",
+        "title": "Ridge Straight Jeans - Indigo / 32",
+        "quantity": 2,
+        "unit_price": "78.00"
+      }
+    ]
+  },
+  {
+    "order_id": "10116",
+    "customer_email": "mia@example.com",
+    "customer_name": "Mia Carter",
+    "status": "delivered",
+    "refund_status": "approved",
+    "total_amount": "58.00",
+    "currency": "USD",
+    "tracking_number": "SGTRACK10116",
+    "items": [
+      {
+        "product_sku": "SG-SANDAL-TRAIL",
+        "variant_sku": "SG-SANDAL-TRAIL-TAN-9",
+        "title": "Trekline Trail Sandal - Tan / 9",
+        "quantity": 1,
+        "unit_price": "58.00"
+      }
+    ]
+  },
+  {
+    "order_id": "10127",
+    "customer_email": "lucas@example.com",
+    "customer_name": "Lucas Bennett",
+    "status": "shipped",
+    "refund_status": "not_requested",
+    "total_amount": "84.00",
+    "currency": "USD",
+    "tracking_number": "SGTRACK10127",
+    "items": [
+      {
+        "product_sku": "SG-SCARF-WOOL",
+        "variant_sku": "SG-SCARF-WOOL-CRM-OS",
+        "title": "Alpine Wool Scarf - Cream / One Size",
+        "quantity": 2,
+        "unit_price": "42.00"
+      }
+    ]
+  },
+  {
+    "order_id": "10139",
+    "customer_email": "amelia@example.com",
+    "customer_name": "Amelia Foster",
+    "status": "processing",
+    "refund_status": "not_requested",
+    "total_amount": "74.00",
+    "currency": "USD",
+    "tracking_number": null,
+    "items": [
+      {
+        "product_sku": "SG-SUNGLASS-AVIATOR",
+        "variant_sku": "SG-SUNGLASS-AVIATOR-GLD-OS",
+        "title": "Solace Aviator Sunglasses - Gold / One Size",
+        "quantity": 1,
+        "unit_price": "74.00"
+      }
+    ]
+  },
+  {
+    "order_id": "10145",
+    "customer_email": "henry@example.com",
+    "customer_name": "Henry Adams",
+    "status": "delivered",
+    "refund_status": "not_requested",
+    "total_amount": "64.00",
+    "currency": "USD",
+    "tracking_number": "SGTRACK10145",
+    "items": [
+      {
+        "product_sku": "SG-CAP-TWILL",
+        "variant_sku": "SG-CAP-TWILL-NVY-OS",
+        "title": "Field Twill Cap - Navy / One Size",
+        "quantity": 1,
+        "unit_price": "28.00"
+      },
+      {
+        "product_sku": "SG-SOCK-MERINO",
+        "variant_sku": "SG-SOCK-MERINO-BLK-L",
+        "title": "Merino Crew Socks - Black / L",
+        "quantity": 2,
+        "unit_price": "18.00"
+      }
+    ]
+  },
+  {
+    "order_id": "10158",
+    "customer_email": "charlotte@example.com",
+    "customer_name": "Charlotte Kim",
+    "status": "processing",
+    "refund_status": "not_requested",
+    "total_amount": "46.00",
+    "currency": "USD",
+    "tracking_number": null,
+    "items": [
+      {
+        "product_sku": "SG-BELT-LEATHER",
+        "variant_sku": "SG-BELT-LEATHER-BRN-34",
+        "title": "Mercer Leather Belt - Brown / 34",
+        "quantity": 1,
+        "unit_price": "46.00"
+      }
+    ]
+  },
+  {
+    "order_id": "10163",
+    "customer_email": "james@example.com",
+    "customer_name": "James Wilson",
+    "status": "cancelled",
+    "refund_status": "rejected",
+    "total_amount": "164.00",
+    "currency": "USD",
+    "tracking_number": null,
+    "items": [
+      {
+        "product_sku": "SG-COAT-TRENCH",
+        "variant_sku": "SG-COAT-TRENCH-KHK-M",
+        "title": "Vale Trench Coat - Khaki / M",
+        "quantity": 1,
+        "unit_price": "164.00"
+      }
+    ]
+  },
+  {
+    "order_id": "10178",
+    "customer_email": "harper@example.com",
+    "customer_name": "Harper Young",
+    "status": "delivered",
+    "refund_status": "not_requested",
+    "total_amount": "68.00",
+    "currency": "USD",
+    "tracking_number": "SGTRACK10178",
+    "items": [
+      {
+        "product_sku": "SG-SKIRT-PLEATED",
+        "variant_sku": "SG-SKIRT-PLEATED-ROS-M",
+        "title": "Orla Pleated Skirt - Rose / M",
+        "quantity": 1,
+        "unit_price": "68.00"
+      }
+    ]
+  },
+  {
+    "order_id": "10184",
+    "customer_email": "benjamin@example.com",
+    "customer_name": "Benjamin Lewis",
+    "status": "shipped",
+    "refund_status": "not_requested",
+    "total_amount": "104.00",
+    "currency": "USD",
+    "tracking_number": "SGTRACK10184",
+    "items": [
+      {
+        "product_sku": "SG-POLO-PIQUE",
+        "variant_sku": "SG-POLO-PIQUE-WHT-M",
+        "title": "Club Pique Polo - White / M",
+        "quantity": 2,
+        "unit_price": "52.00"
+      }
+    ]
+  },
+  {
+    "order_id": "10196",
+    "customer_email": "evelyn@example.com",
+    "customer_name": "Evelyn Price",
+    "status": "processing",
+    "refund_status": "not_requested",
+    "total_amount": "142.00",
+    "currency": "USD",
+    "tracking_number": null,
+    "items": [
+      {
+        "product_sku": "SG-BLAZER-KNIT",
+        "variant_sku": "SG-BLAZER-KNIT-CHR-M",
+        "title": "Motion Knit Blazer - Charcoal / M",
+        "quantity": 1,
+        "unit_price": "142.00"
+      }
+    ]
+  },
+  {
+    "order_id": "10208",
+    "customer_email": "daniel@example.com",
+    "customer_name": "Daniel Hall",
+    "status": "delivered",
+    "refund_status": "not_requested",
+    "total_amount": "76.00",
+    "currency": "USD",
+    "tracking_number": "SGTRACK10208",
+    "items": [
+      {
+        "product_sku": "SG-WALLET-SLIM",
+        "variant_sku": "SG-WALLET-SLIM-BLK-OS",
+        "title": "Nolan Slim Wallet - Black / One Size",
+        "quantity": 2,
+        "unit_price": "38.00"
+      }
+    ]
+  },
+  {
+    "order_id": "10217",
+    "customer_email": "grace@example.com",
+    "customer_name": "Grace Martin",
+    "status": "shipped",
+    "refund_status": "not_requested",
+    "total_amount": "216.00",
+    "currency": "USD",
+    "tracking_number": "SGTRACK10217",
+    "items": [
+      {
+        "product_sku": "SG-BLAZER-KNIT",
+        "variant_sku": "SG-BLAZER-KNIT-NVY-L",
+        "title": "Motion Knit Blazer - Navy / L",
+        "quantity": 1,
+        "unit_price": "142.00"
+      },
+      {
+        "product_sku": "SG-SUNGLASS-AVIATOR",
+        "variant_sku": "SG-SUNGLASS-AVIATOR-GUN-OS",
+        "title": "Solace Aviator Sunglasses - Gunmetal / One Size",
+        "quantity": 1,
+        "unit_price": "74.00"
+      }
+    ]
+  },
+  {
+    "order_id": "10224",
+    "customer_email": "zoe@example.com",
+    "customer_name": "Zoe Mitchell",
+    "status": "processing",
+    "refund_status": "not_requested",
+    "total_amount": "122.00",
+    "currency": "USD",
+    "tracking_number": null,
+    "items": [
+      {
+        "product_sku": "SG-CAP-TWILL",
+        "variant_sku": "SG-CAP-TWILL-KHK-OS",
+        "title": "Field Twill Cap - Khaki / One Size",
+        "quantity": 1,
+        "unit_price": "28.00"
+      },
+      {
+        "product_sku": "SG-SCARF-WOOL",
+        "variant_sku": "SG-SCARF-WOOL-RED-OS",
+        "title": "Alpine Wool Scarf - Burgundy / One Size",
+        "quantity": 1,
+        "unit_price": "42.00"
+      },
+      {
+        "product_sku": "SG-POLO-PIQUE",
+        "variant_sku": "SG-POLO-PIQUE-GRN-L",
+        "title": "Club Pique Polo - Green / L",
+        "quantity": 1,
+        "unit_price": "52.00"
+      }
+    ]
   }
 ]

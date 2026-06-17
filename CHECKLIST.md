@@ -34,7 +34,7 @@ Each phase must be completed and verified before moving to the next phase.
 - [x] Add order and order item models.
 - [x] Add log models.
 - [x] Add repeatable seed script.
-- [ ] Verify database records are created correctly.
+- [x] Verify database records are created correctly.
 
 ## Phase 3: RAG Ingestion Pipeline
 
@@ -43,8 +43,8 @@ Each phase must be completed and verified before moving to the next phase.
 - [x] Add ChromaDB collection setup.
 - [x] Add metadata-rich document chunks.
 - [x] Add ingestion script.
-- [ ] Verify product retrieval.
-- [ ] Verify policy retrieval.
+- [x] Verify product retrieval.
+- [x] Verify policy retrieval.
 - [x] Verify citation metadata is available.
 
 ## Phase 4: Grounded RAG Chat Endpoint
@@ -102,12 +102,12 @@ Each phase must be completed and verified before moving to the next phase.
 
 ## Phase 8: Quality Hardening
 
-- [ ] Add unit tests.
-- [ ] Add API tests.
-- [ ] Add retrieval tests.
-- [ ] Add tool business-rule tests.
-- [ ] Add README setup instructions.
-- [ ] Add clean error handling.
-- [ ] Verify full test suite passes.
-- [ ] Verify fresh setup flow.
-- [ ] Verify final demo behavior.
+- [x] Add unit tests.
+- [x] Add API tests.
+- [x] Add retrieval tests.
+- [x] Add tool business-rule tests.
+- [x] Add README setup instructions.
+- [x] Add clean error handling.
+- [x] Verify full test suite passes.
+- [x] Verify fresh setup flow.
+- [x] Verify final demo behavior.

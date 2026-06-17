@@ -16,9 +16,43 @@ from app.services.order_tool_router import detect_order_tool, execute_tool_call
 from app.services.evaluation import score_groundedness
 
 KNOWLEDGE_PATTERN = re.compile(
-    r"\b(product|price|stock|variant|size|color|jacket|sneaker|tote|bag|shipping|return policy|refund policy|policy|delivery)\b",
+    r"\b(product|products|price|stock|variant|variants|size|color|leather|jacket|sneaker|tote|bag|shipping|return policy|refund policy|policy|policies|delivery)\b",
     re.IGNORECASE,
 )
+
+ROUTING_TYPO_MAP = {
+    "lether": "leather",
+    "jaket": "jacket",
+    "jackt": "jacket",
+    "sneekers": "sneakers",
+    "sneeker": "sneaker",
+    "policie": "policy",
+    "policys": "policies",
+}
+
+PRODUCT_TYPE_TOKENS = {
+    "backpack",
+    "bag",
+    "belt",
+    "blazer",
+    "cap",
+    "coat",
+    "dress",
+    "hoodie",
+    "jacket",
+    "jeans",
+    "polo",
+    "sandal",
+    "scarf",
+    "shirt",
+    "skirt",
+    "sneaker",
+    "sock",
+    "sunglasses",
+    "tote",
+    "wallet",
+    "watch",
+}
 
 
 def answer_chat(message: str, top_k: int = 3, session: Session | None = None) -> ChatResponse:
@@ -38,7 +72,9 @@ def answer_chat(message: str, top_k: int = 3, session: Session | None = None) ->
 
 def _answer_chat_with_session(message: str, top_k: int, session: Session, started_at: float) -> ChatResponse:
     tool_call = detect_order_tool(message)
-    if tool_call is not None and not KNOWLEDGE_PATTERN.search(message):
+    routing_message = _normalize_message_for_routing(message)
+
+    if tool_call is not None and not KNOWLEDGE_PATTERN.search(routing_message):
         interaction = create_interaction_start(session=session, user_query=message, route=ChatRoute.tool)
         tool_result = execute_tool_call(
             session=session,
@@ -54,7 +90,7 @@ def _answer_chat_with_session(message: str, top_k: int, session: Session, starte
         finish_interaction(session=session, interaction=interaction, response=response, started_at=started_at)
         return response
 
-    if not KNOWLEDGE_PATTERN.search(message):
+    if not KNOWLEDGE_PATTERN.search(routing_message):
         response = ChatResponse(
             route=ChatRoute.unknown,
             answer="I don't know from the available store data.",
@@ -62,7 +98,10 @@ def _answer_chat_with_session(message: str, top_k: int, session: Session, starte
         log_completed_interaction(session=session, user_query=message, response=response, started_at=started_at)
         return response
 
-    results = search_knowledge_base(query=message, limit=top_k)
+    results = _filter_precise_product_results(
+        message=message,
+        results=search_knowledge_base(query=message, limit=top_k),
+    )
     if not results:
         response = ChatResponse(
             route=ChatRoute.unknown,
@@ -96,6 +135,85 @@ def _generate_grounded_answer(message: str, results: list[KnowledgeSearchResult]
             return groq_answer
 
     return _build_grounded_answer(results)
+
+
+def _filter_precise_product_results(
+    message: str,
+    results: list[KnowledgeSearchResult],
+) -> list[KnowledgeSearchResult]:
+    query_text = _normalize_message_for_routing(message)
+    query_tokens = set(re.findall(r"[a-z0-9]+", query_text))
+    product_type_tokens = query_tokens.intersection(PRODUCT_TYPE_TOKENS)
+
+    if product_type_tokens:
+        typed_results = [
+            result
+            for result in results
+            if result.metadata.source_type != SourceType.product
+            or product_type_tokens.intersection(_tokens_for_result(result))
+        ]
+        if typed_results:
+            results = typed_results
+
+    exact_product_ids: set[str] = set()
+
+    for result in results:
+        if result.metadata.source_type != SourceType.product:
+            continue
+
+        sku = (result.metadata.sku or result.metadata.source_id).lower()
+        title = (result.metadata.title or "").lower()
+        title_tokens = set(re.findall(r"[a-z0-9]+", title))
+        variant_skus = re.findall(r"sku\s+([A-Z0-9-]+)", result.content)
+
+        if sku in query_text:
+            exact_product_ids.add(result.metadata.source_id)
+            continue
+        if title and title in query_text:
+            exact_product_ids.add(result.metadata.source_id)
+            continue
+        if title_tokens and title_tokens.issubset(query_tokens):
+            exact_product_ids.add(result.metadata.source_id)
+            continue
+        if any(variant_sku.lower() in query_text for variant_sku in variant_skus):
+            exact_product_ids.add(result.metadata.source_id)
+
+    if not exact_product_ids:
+        return results
+
+    return [
+        result
+        for result in results
+        if result.metadata.source_type != SourceType.product
+        or result.metadata.source_id in exact_product_ids
+    ]
+
+
+def _normalize_message_for_routing(message: str) -> str:
+    normalized_tokens: list[str] = []
+
+    for token in re.findall(r"[a-z0-9]+", message.lower()):
+        normalized_token = ROUTING_TYPO_MAP.get(token, token)
+        if normalized_token.endswith("s") and len(normalized_token) > 3:
+            normalized_token = normalized_token[:-1]
+        normalized_tokens.append(normalized_token)
+
+    return " ".join(normalized_tokens)
+
+
+def _tokens_for_result(result: KnowledgeSearchResult) -> set[str]:
+    text = " ".join(
+        value
+        for value in [
+            result.content,
+            result.metadata.title,
+            result.metadata.section,
+            result.metadata.source_id,
+            result.metadata.sku,
+        ]
+        if value
+    )
+    return set(re.findall(r"[a-z0-9]+", _normalize_message_for_routing(text)))
 
 
 def _generate_with_groq(message: str, results: list[KnowledgeSearchResult]) -> str | None:

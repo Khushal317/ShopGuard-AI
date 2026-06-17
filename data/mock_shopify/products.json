@@ -70,5 +70,413 @@
         "price": "48.00"
       }
     ]
+  },
+  {
+    "sku": "SG-HOODIE-FLEECE",
+    "title": "Northline Fleece Hoodie",
+    "category": "Sweatshirts",
+    "description": "A heavyweight cotton-blend hoodie with brushed fleece interior and kangaroo pocket.",
+    "price": "72.00",
+    "currency": "USD",
+    "variants": [
+      {
+        "variant_sku": "SG-HOODIE-FLEECE-GRY-S",
+        "color": "Heather Gray",
+        "size": "S",
+        "stock": 18,
+        "price": "72.00"
+      },
+      {
+        "variant_sku": "SG-HOODIE-FLEECE-GRN-M",
+        "color": "Forest Green",
+        "size": "M",
+        "stock": 9,
+        "price": "72.00"
+      }
+    ]
+  },
+  {
+    "sku": "SG-DRESS-LINEN",
+    "title": "Maris Linen Wrap Dress",
+    "category": "Dresses",
+    "description": "A breathable linen wrap dress with adjustable waist tie and midi length.",
+    "price": "118.00",
+    "currency": "USD",
+    "variants": [
+      {
+        "variant_sku": "SG-DRESS-LINEN-BLU-S",
+        "color": "Blue",
+        "size": "S",
+        "stock": 7,
+        "price": "118.00"
+      },
+      {
+        "variant_sku": "SG-DRESS-LINEN-WHT-M",
+        "color": "White",
+        "size": "M",
+        "stock": 5,
+        "price": "118.00"
+      }
+    ]
+  },
+  {
+    "sku": "SG-WATCH-MINIMAL",
+    "title": "Civic Minimal Watch",
+    "category": "Accessories",
+    "description": "A slim analog watch with stainless steel case, mineral glass, and leather strap.",
+    "price": "136.00",
+    "currency": "USD",
+    "variants": [
+      {
+        "variant_sku": "SG-WATCH-MINIMAL-TAN-OS",
+        "color": "Tan",
+        "size": "One Size",
+        "stock": 11,
+        "price": "136.00"
+      },
+      {
+        "variant_sku": "SG-WATCH-MINIMAL-BLK-OS",
+        "color": "Black",
+        "size": "One Size",
+        "stock": 8,
+        "price": "136.00"
+      }
+    ]
+  },
+  {
+    "sku": "SG-BACKPACK-TECH",
+    "title": "Axis Tech Backpack",
+    "category": "Bags",
+    "description": "A water-resistant backpack with padded laptop sleeve, cable pocket, and luggage pass-through.",
+    "price": "96.00",
+    "currency": "USD",
+    "variants": [
+      {
+        "variant_sku": "SG-BACKPACK-TECH-BLK-OS",
+        "color": "Black",
+        "size": "One Size",
+        "stock": 13,
+        "price": "96.00"
+      },
+      {
+        "variant_sku": "SG-BACKPACK-TECH-SLT-OS",
+        "color": "Slate",
+        "size": "One Size",
+        "stock": 6,
+        "price": "96.00"
+      }
+    ]
+  },
+  {
+    "sku": "SG-SHIRT-OXFORD",
+    "title": "Everpress Oxford Shirt",
+    "category": "Shirts",
+    "description": "A crisp button-down Oxford shirt with a structured collar and wrinkle-resistant finish.",
+    "price": "64.00",
+    "currency": "USD",
+    "variants": [
+      {
+        "variant_sku": "SG-SHIRT-OXFORD-WHT-M",
+        "color": "White",
+        "size": "M",
+        "stock": 20,
+        "price": "64.00"
+      },
+      {
+        "variant_sku": "SG-SHIRT-OXFORD-BLU-L",
+        "color": "Blue",
+        "size": "L",
+        "stock": 14,
+        "price": "64.00"
+      }
+    ]
+  },
+  {
+    "sku": "SG-JEANS-STRAIGHT",
+    "title": "Ridge Straight Jeans",
+    "category": "Denim",
+    "description": "Straight-leg denim jeans with a mid rise, classic five-pocket styling, and slight stretch.",
+    "price": "78.00",
+    "currency": "USD",
+    "variants": [
+      {
+        "variant_sku": "SG-JEANS-STRAIGHT-IND-32",
+        "color": "Indigo",
+        "size": "32",
+        "stock": 10,
+        "price": "78.00"
+      },
+      {
+        "variant_sku": "SG-JEANS-STRAIGHT-BLK-34",
+        "color": "Black",
+        "size": "34",
+        "stock": 7,
+        "price": "78.00"
+      }
+    ]
+  },
+  {
+    "sku": "SG-SANDAL-TRAIL",
+    "title": "Trekline Trail Sandal",
+    "category": "Footwear",
+    "description": "An outdoor sandal with adjustable straps, contoured footbed, and grippy rubber outsole.",
+    "price": "58.00",
+    "currency": "USD",
+    "variants": [
+      {
+        "variant_sku": "SG-SANDAL-TRAIL-BLK-8",
+        "color": "Black",
+        "size": "8",
+        "stock": 9,
+        "price": "58.00"
+      },
+      {
+        "variant_sku": "SG-SANDAL-TRAIL-TAN-9",
+        "color": "Tan",
+        "size": "9",
+        "stock": 12,
+        "price": "58.00"
+      }
+    ]
+  },
+  {
+    "sku": "SG-SCARF-WOOL",
+    "title": "Alpine Wool Scarf",
+    "category": "Accessories",
+    "description": "A soft wool scarf with a brushed finish and fringed ends for cold-weather layering.",
+    "price": "42.00",
+    "currency": "USD",
+    "variants": [
+      {
+        "variant_sku": "SG-SCARF-WOOL-CRM-OS",
+        "color": "Cream",
+        "size": "One Size",
+        "stock": 16,
+        "price": "42.00"
+      },
+      {
+        "variant_sku": "SG-SCARF-WOOL-RED-OS",
+        "color": "Burgundy",
+        "size": "One Size",
+        "stock": 8,
+        "price": "42.00"
+      }
+    ]
+  },
+  {
+    "sku": "SG-CAP-TWILL",
+    "title": "Field Twill Cap",
+    "category": "Accessories",
+    "description": "A six-panel cotton twill cap with adjustable back strap and embroidered logo.",
+    "price": "28.00",
+    "currency": "USD",
+    "variants": [
+      {
+        "variant_sku": "SG-CAP-TWILL-KHK-OS",
+        "color": "Khaki",
+        "size": "One Size",
+        "stock": 25,
+        "price": "28.00"
+      },
+      {
+        "variant_sku": "SG-CAP-TWILL-NVY-OS",
+        "color": "Navy",
+        "size": "One Size",
+        "stock": 21,
+        "price": "28.00"
+      }
+    ]
+  },
+  {
+    "sku": "SG-BELT-LEATHER",
+    "title": "Mercer Leather Belt",
+    "category": "Accessories",
+    "description": "A full-grain leather belt with brushed metal buckle and burnished edges.",
+    "price": "46.00",
+    "currency": "USD",
+    "variants": [
+      {
+        "variant_sku": "SG-BELT-LEATHER-BRN-34",
+        "color": "Brown",
+        "size": "34",
+        "stock": 10,
+        "price": "46.00"
+      },
+      {
+        "variant_sku": "SG-BELT-LEATHER-BLK-36",
+        "color": "Black",
+        "size": "36",
+        "stock": 9,
+        "price": "46.00"
+      }
+    ]
+  },
+  {
+    "sku": "SG-SUNGLASS-AVIATOR",
+    "title": "Solace Aviator Sunglasses",
+    "category": "Accessories",
+    "description": "Lightweight aviator sunglasses with polarized lenses and adjustable nose pads.",
+    "price": "74.00",
+    "currency": "USD",
+    "variants": [
+      {
+        "variant_sku": "SG-SUNGLASS-AVIATOR-GLD-OS",
+        "color": "Gold",
+        "size": "One Size",
+        "stock": 12,
+        "price": "74.00"
+      },
+      {
+        "variant_sku": "SG-SUNGLASS-AVIATOR-GUN-OS",
+        "color": "Gunmetal",
+        "size": "One Size",
+        "stock": 5,
+        "price": "74.00"
+      }
+    ]
+  },
+  {
+    "sku": "SG-SOCK-MERINO",
+    "title": "Merino Crew Socks",
+    "category": "Essentials",
+    "description": "Breathable merino-blend crew socks with cushioned heel and seamless toe.",
+    "price": "18.00",
+    "currency": "USD",
+    "variants": [
+      {
+        "variant_sku": "SG-SOCK-MERINO-GRY-M",
+        "color": "Gray",
+        "size": "M",
+        "stock": 40,
+        "price": "18.00"
+      },
+      {
+        "variant_sku": "SG-SOCK-MERINO-BLK-L",
+        "color": "Black",
+        "size": "L",
+        "stock": 34,
+        "price": "18.00"
+      }
+    ]
+  },
+  {
+    "sku": "SG-COAT-TRENCH",
+    "title": "Vale Trench Coat",
+    "category": "Outerwear",
+    "description": "A water-repellent trench coat with waist belt, storm flap, and smooth lining.",
+    "price": "164.00",
+    "currency": "USD",
+    "variants": [
+      {
+        "variant_sku": "SG-COAT-TRENCH-KHK-M",
+        "color": "Khaki",
+        "size": "M",
+        "stock": 6,
+        "price": "164.00"
+      },
+      {
+        "variant_sku": "SG-COAT-TRENCH-NVY-L",
+        "color": "Navy",
+        "size": "L",
+        "stock": 3,
+        "price": "164.00"
+      }
+    ]
+  },
+  {
+    "sku": "SG-SKIRT-PLEATED",
+    "title": "Orla Pleated Skirt",
+    "category": "Skirts",
+    "description": "A flowy pleated midi skirt with elastic waistband and soft satin finish.",
+    "price": "68.00",
+    "currency": "USD",
+    "variants": [
+      {
+        "variant_sku": "SG-SKIRT-PLEATED-BLK-S",
+        "color": "Black",
+        "size": "S",
+        "stock": 8,
+        "price": "68.00"
+      },
+      {
+        "variant_sku": "SG-SKIRT-PLEATED-ROS-M",
+        "color": "Rose",
+        "size": "M",
+        "stock": 7,
+        "price": "68.00"
+      }
+    ]
+  },
+  {
+    "sku": "SG-POLO-PIQUE",
+    "title": "Club Pique Polo",
+    "category": "Shirts",
+    "description": "A breathable cotton pique polo with ribbed collar and tailored fit.",
+    "price": "52.00",
+    "currency": "USD",
+    "variants": [
+      {
+        "variant_sku": "SG-POLO-PIQUE-WHT-M",
+        "color": "White",
+        "size": "M",
+        "stock": 17,
+        "price": "52.00"
+      },
+      {
+        "variant_sku": "SG-POLO-PIQUE-GRN-L",
+        "color": "Green",
+        "size": "L",
+        "stock": 11,
+        "price": "52.00"
+      }
+    ]
+  },
+  {
+    "sku": "SG-BLAZER-KNIT",
+    "title": "Motion Knit Blazer",
+    "category": "Tailoring",
+    "description": "A soft knit blazer with stretch comfort, notch lapel, and patch pockets.",
+    "price": "142.00",
+    "currency": "USD",
+    "variants": [
+      {
+        "variant_sku": "SG-BLAZER-KNIT-CHR-M",
+        "color": "Charcoal",
+        "size": "M",
+        "stock": 5,
+        "price": "142.00"
+      },
+      {
+        "variant_sku": "SG-BLAZER-KNIT-NVY-L",
+        "color": "Navy",
+        "size": "L",
+        "stock": 4,
+        "price": "142.00"
+      }
+    ]
+  },
+  {
+    "sku": "SG-WALLET-SLIM",
+    "title": "Nolan Slim Wallet",
+    "category": "Accessories",
+    "description": "A compact leather wallet with six card slots, bill sleeve, and RFID-blocking lining.",
+    "price": "38.00",
+    "currency": "USD",
+    "variants": [
+      {
+        "variant_sku": "SG-WALLET-SLIM-BRN-OS",
+        "color": "Brown",
+        "size": "One Size",
+        "stock": 18,
+        "price": "38.00"
+      },
+      {
+        "variant_sku": "SG-WALLET-SLIM-BLK-OS",
+        "color": "Black",
+        "size": "One Size",
+        "stock": 16,
+        "price": "38.00"
+      }
+    ]
   }
 ]

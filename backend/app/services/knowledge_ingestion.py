@@ -196,13 +196,26 @@ def search_local_knowledge_base(query: str, limit: int = 3) -> list[KnowledgeSea
 
 def _tokenize_for_search(text: str) -> set[str]:
     stop_words = {"a", "an", "and", "are", "can", "does", "is", "it", "of", "the", "to", "what", "with"}
-    tokens = set(re.findall(r"[a-z0-9]+", text.lower()))
+    tokens = {_normalize_token(token) for token in re.findall(r"[a-z0-9]+", text.lower())}
     tokens = tokens.difference(stop_words)
     normalized = set(tokens)
     for token in tokens:
         if token.endswith("s") and len(token) > 3:
             normalized.add(token[:-1])
     return normalized
+
+
+def _normalize_token(token: str) -> str:
+    typo_map = {
+        "lether": "leather",
+        "jaket": "jacket",
+        "jackt": "jacket",
+        "sneekers": "sneakers",
+        "sneeker": "sneaker",
+        "policie": "policy",
+        "policys": "policies",
+    }
+    return typo_map.get(token, token)
 
 
 def _lexical_similarity(query_tokens: set[str], content_tokens: set[str]) -> float:

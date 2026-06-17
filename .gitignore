@@ -8,3 +8,8 @@ chroma_store/
 .backend.pid
 .frontend.pid
 backend-server*.log
+
+# Keep core project documentation tracked.
+!IMPLEMENTATION.md
+!CHECKLIST.md
+!knowledge.md

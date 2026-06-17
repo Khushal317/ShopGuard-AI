@@ -10,12 +10,6 @@ from typing import Any
 import requests
 import streamlit as st
 
-ROOT_DIR = Path(__file__).resolve().parents[1]
-BACKEND_DIR = ROOT_DIR / "backend"
-if str(BACKEND_DIR) not in sys.path:
-    sys.path.insert(0, str(BACKEND_DIR))
-
-from app.schemas.chat import ChatRequest, ChatResponse
 
 DEFAULT_API_BASE_URL = "http://127.0.0.1:8000"
 
@@ -37,14 +31,13 @@ API_BASE_URL = normalize_api_base_url(os.getenv("SHOPGUARD_API_BASE_URL"))
 
 
 def call_chat(message: str, top_k: int) -> dict[str, Any]:
-    request_payload = ChatRequest(message=message, top_k=top_k)
     response = requests.post(
         f"{API_BASE_URL}/api/chat",
-        json=request_payload.model_dump(mode="json"),
+        json={"message": message, "top_k": top_k},
         timeout=45,
     )
     response.raise_for_status()
-    return ChatResponse.model_validate(response.json()).model_dump(mode="json")
+    return response.json()
 
 
 def init_state() -> None:

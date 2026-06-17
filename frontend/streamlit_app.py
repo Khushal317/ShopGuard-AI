@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 import re
 import sys
+from html import escape
 from pathlib import Path
 from typing import Any
 
@@ -186,10 +187,23 @@ def render_structured_rag_answer(response: dict[str, Any], fallback_answer: str)
     contexts = response.get("retrieved_context") or []
     product_contexts = [context for context in contexts if context.get("source_type") == "product"]
     policy_contexts = [context for context in contexts if context.get("source_type") == "policy"]
+    answer = response.get("answer") or fallback_answer
+    direct_answer = extract_direct_answer(answer)
 
     if not contexts:
-        st.write(response.get("answer", fallback_answer))
+        st.write(answer)
         return
+
+    if direct_answer:
+        st.markdown(
+            f"""
+            <div class="sg-answer-card">
+              <div class="sg-answer-label">Answer</div>
+              <div class="sg-answer-copy">{escape(direct_answer)}</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
     if product_contexts:
         st.markdown("**Products**")
@@ -273,6 +287,15 @@ def parse_product_context(content: str) -> dict[str, Any]:
     return parsed
 
 
+def extract_direct_answer(answer: str) -> str:
+    if answer.startswith(("Product information:", "Policy information:")):
+        return ""
+    for marker in ["\n\nProduct information:", "\n\nPolicy information:"]:
+        if marker in answer:
+            return answer.split(marker, 1)[0].strip()
+    return answer.strip()
+
+
 def main() -> None:
     st.set_page_config(
         page_title="ShopGuard AI",
@@ -333,6 +356,26 @@ def main() -> None:
         }
         .sg-card-copy {
             color: #334155;
+            line-height: 1.55;
+        }
+        .sg-answer-card {
+            background: #ffffff;
+            border: 1px solid #d1fae5;
+            border-left: 4px solid #0f766e;
+            border-radius: 8px;
+            padding: 0.95rem 1.05rem;
+            margin: 0.55rem 0 0.9rem 0;
+            box-shadow: 0 8px 18px rgba(15, 23, 42, 0.05);
+        }
+        .sg-answer-label {
+            color: #0f766e;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+        }
+        .sg-answer-copy {
+            color: #0f172a;
             line-height: 1.55;
         }
         code { white-space: pre-wrap !important; }

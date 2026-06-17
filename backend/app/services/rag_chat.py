@@ -16,7 +16,7 @@ from app.services.order_tool_router import detect_order_tool, execute_tool_call
 from app.services.evaluation import score_groundedness
 
 KNOWLEDGE_PATTERN = re.compile(
-    r"\b(product|products|price|stock|variant|variants|size|color|leather|jacket|sneaker|tote|bag|shipping|return policy|refund policy|policy|policies|delivery)\b",
+    r"\b(product|products|price|stock|variant|variants|size|color|leather|jacket|sneaker|tote|bag|wallet|shipping|return|refund|return policy|refund policy|policy|policies|delivery)\b",
     re.IGNORECASE,
 )
 
@@ -26,6 +26,8 @@ ROUTING_TYPO_MAP = {
     "jackt": "jacket",
     "sneekers": "sneakers",
     "sneeker": "sneaker",
+    "avbailable": "available",
+    "availble": "available",
     "policie": "policy",
     "policys": "policies",
 }
@@ -52,6 +54,43 @@ PRODUCT_TYPE_TOKENS = {
     "tote",
     "wallet",
     "watch",
+}
+
+COLOR_TOKENS = {
+    "black",
+    "blue",
+    "brown",
+    "charcoal",
+    "cream",
+    "green",
+    "grey",
+    "gray",
+    "ivory",
+    "navy",
+    "olive",
+    "pink",
+    "red",
+    "tan",
+    "white",
+}
+
+AVAILABILITY_TOKENS = {
+    "any",
+    "available",
+    "availability",
+    "recommend",
+    "recommendation",
+    "suggest",
+    "suggestion",
+}
+
+POLICY_TOKENS = {
+    "delivery",
+    "policy",
+    "policie",
+    "refund",
+    "return",
+    "shipping",
 }
 
 
@@ -129,12 +168,19 @@ def _answer_chat_with_session(message: str, top_k: int, session: Session, starte
 
 def _generate_grounded_answer(message: str, results: list[KnowledgeSearchResult]) -> str:
     settings = get_settings()
+    deterministic_answer = _build_grounded_answer(message=message, results=results)
+    if (
+        _build_direct_product_answer(message=message, results=results)
+        or _build_direct_policy_answer(results=results)
+    ):
+        return deterministic_answer
+
     if settings.groq_api_key:
         groq_answer = _generate_with_groq(message=message, results=results)
         if groq_answer:
             return groq_answer
 
-    return _build_grounded_answer(results)
+    return deterministic_answer
 
 
 def _filter_precise_product_results(
@@ -144,13 +190,29 @@ def _filter_precise_product_results(
     query_text = _normalize_message_for_routing(message)
     query_tokens = set(re.findall(r"[a-z0-9]+", query_text))
     product_type_tokens = query_tokens.intersection(PRODUCT_TYPE_TOKENS)
+    policy_tokens = query_tokens.intersection(POLICY_TOKENS)
+    product_intent = bool(product_type_tokens or query_tokens.intersection({"product", "price", "stock", "variant", "size", "color"}))
+    policy_intent = bool(policy_tokens)
+
+    if policy_intent and not product_intent:
+        policy_results = [result for result in results if result.metadata.source_type == SourceType.policy]
+        if policy_results:
+            return _filter_policy_results(query_tokens=query_tokens, results=policy_results)
+
+    if product_intent and not policy_intent:
+        product_results = [result for result in results if result.metadata.source_type == SourceType.product]
+        if product_results:
+            results = product_results
 
     if product_type_tokens:
         typed_results = [
             result
             for result in results
-            if result.metadata.source_type != SourceType.product
-            or product_type_tokens.intersection(_tokens_for_result(result))
+            if (
+                result.metadata.source_type == SourceType.product
+                and product_type_tokens.intersection(_tokens_for_result(result))
+            )
+            or (result.metadata.source_type != SourceType.product and policy_tokens)
         ]
         if typed_results:
             results = typed_results
@@ -187,6 +249,18 @@ def _filter_precise_product_results(
         if result.metadata.source_type != SourceType.product
         or result.metadata.source_id in exact_product_ids
     ]
+
+
+def _filter_policy_results(
+    query_tokens: set[str],
+    results: list[KnowledgeSearchResult],
+) -> list[KnowledgeSearchResult]:
+    matching_results = [
+        result
+        for result in results
+        if query_tokens.intersection(_tokens_for_result(result))
+    ]
+    return matching_results or results
 
 
 def _normalize_message_for_routing(message: str) -> str:
@@ -264,7 +338,9 @@ def _generate_with_groq(message: str, results: list[KnowledgeSearchResult]) -> s
     return content.strip() if isinstance(content, str) and content.strip() else None
 
 
-def _build_grounded_answer(results: list[KnowledgeSearchResult]) -> str:
+def _build_grounded_answer(message: str, results: list[KnowledgeSearchResult]) -> str:
+    direct_answer = _build_direct_product_answer(message=message, results=results)
+    direct_policy_answer = _build_direct_policy_answer(results=results)
     product_lines: list[str] = []
     policy_lines: list[str] = []
 
@@ -276,6 +352,10 @@ def _build_grounded_answer(results: list[KnowledgeSearchResult]) -> str:
             policy_lines.append(f"{_compact_content(result.content)} [{label}]")
 
     answer_parts: list[str] = []
+    if direct_answer:
+        answer_parts.append(direct_answer)
+    elif direct_policy_answer:
+        answer_parts.append(direct_policy_answer)
     if product_lines:
         answer_parts.append("Product information: " + " ".join(product_lines))
     if policy_lines:
@@ -285,6 +365,93 @@ def _build_grounded_answer(results: list[KnowledgeSearchResult]) -> str:
         return "I don't know from the available store data."
 
     return "\n\n".join(answer_parts)
+
+
+def _build_direct_policy_answer(results: list[KnowledgeSearchResult]) -> str | None:
+    policy_results = [result for result in results if result.metadata.source_type == SourceType.policy]
+    if len(policy_results) != 1:
+        return None
+
+    lines = [line.strip() for line in policy_results[0].content.splitlines() if line.strip()]
+    if not lines:
+        return None
+
+    section = policy_results[0].metadata.section or lines[0]
+    body_lines = lines[1:] if lines[0].lower() == section.lower() else lines
+    body = " ".join(body_lines)
+    return f"{section}: {body}"
+
+
+def _build_direct_product_answer(message: str, results: list[KnowledgeSearchResult]) -> str | None:
+    query_tokens = set(re.findall(r"[a-z0-9]+", _normalize_message_for_routing(message)))
+    requested_colors = query_tokens.intersection(COLOR_TOKENS)
+    requested_product_types = query_tokens.intersection(PRODUCT_TYPE_TOKENS)
+    asks_availability = bool(query_tokens.intersection(AVAILABILITY_TOKENS))
+
+    product_results = [result for result in results if result.metadata.source_type == SourceType.product]
+    if len(product_results) != 1:
+        return None
+
+    product = _parse_product_content(product_results[0].content)
+    title = product.get("Product") or product_results[0].metadata.title or "This product"
+    variants = product.get("Variants", [])
+    if not isinstance(variants, list):
+        variants = []
+
+    if not requested_colors:
+        if requested_product_types and asks_availability:
+            variant_text = "; ".join(variants)
+            if variant_text:
+                return f"Yes. I found {title}. Available variants: {variant_text}."
+            return f"Yes. I found {title} in the store data."
+        return None
+
+    matching_variants = [
+        variant
+        for variant in variants
+        if requested_colors.intersection(set(re.findall(r"[a-z0-9]+", _normalize_message_for_routing(variant))))
+    ]
+
+    if matching_variants:
+        variant_text = "; ".join(matching_variants)
+        return f"Yes. {title} is available in {variant_text}."
+
+    available_colors = sorted(
+        {
+            variant.split("/", 1)[0].strip()
+            for variant in variants
+            if "/" in variant and variant.split("/", 1)[0].strip()
+        }
+    )
+    if available_colors:
+        requested_text = ", ".join(sorted(requested_colors))
+        available_text = ", ".join(available_colors)
+        return f"I do not see {title} in {requested_text}. The available colors in the store data are: {available_text}."
+
+    return None
+
+
+def _parse_product_content(content: str) -> dict[str, str | list[str]]:
+    parsed: dict[str, str | list[str]] = {"Variants": []}
+    current_section = None
+
+    for raw_line in content.splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+        if line == "Variants:":
+            current_section = "Variants"
+            continue
+        if current_section == "Variants":
+            variants = parsed["Variants"]
+            if isinstance(variants, list):
+                variants.append(line)
+            continue
+        if ":" in line:
+            key, value = line.split(":", 1)
+            parsed[key.strip()] = value.strip()
+
+    return parsed
 
 
 def _compact_content(content: str) -> str:

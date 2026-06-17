@@ -212,6 +212,8 @@ def _normalize_token(token: str) -> str:
         "jackt": "jacket",
         "sneekers": "sneakers",
         "sneeker": "sneaker",
+        "avbailable": "available",
+        "availble": "available",
         "policie": "policy",
         "policys": "policies",
     }
